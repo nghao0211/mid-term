@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gym Planner — David Hùng</title>
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <div class="container">
+    <div class="navbar-inner">
+      <a href="index.html" class="flex items-center gap-2">
+        <div class="logo-badge animate-pulse-glow"><span>DH</span></div>
+        <span class="logo-text">David Hùng</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">👤 Profile</a>
+        <a href="gym.html" class="nav-link active">💪 Gym Planner</a>
+        <a href="football.html" class="nav-link">⚽ Tin Bóng Đá</a>
+      </div>
+
+      <a href="mailto:davidhung@email.com" class="btn-primary md-flex hidden" style="padding:0.5rem 1rem;border-radius:0.75rem;font-size:0.875rem;font-weight:600;">
+        <span>Liên hệ</span>
+      </a>
+
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu">
+        <span id="bar1"></span>
+        <span id="bar2"></span>
+        <span id="bar3"></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-inner">
+      <a href="index.html" class="mobile-nav-link">👤 Profile</a>
+      <a href="gym.html" class="mobile-nav-link active">💪 Gym Planner</a>
+      <a href="football.html" class="mobile-nav-link">⚽ Tin Bóng Đá</a>
+      <a href="mailto:davidhung@email.com" class="btn-primary" style="margin-top:0.5rem;padding:0.75rem 1rem;border-radius:0.75rem;font-size:0.875rem;font-weight:600;text-align:center;">
+        <span>Liên hệ ngay</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="min-h-screen" style="background:#f8f7ff;">
+
+  <!-- ===== HERO ===== -->
+  <section class="gradient-hero text-center" style="padding:4rem 1rem;">
+    <div class="container-sm animate-fade-in-up">
+      <div class="tag-pill" style="margin-bottom:1.25rem;">💪 AI-Powered Fitness Planner</div>
+      <h1 class="font-display font-bold text-white" style="font-size:2.5rem;margin-bottom:1rem;">
+        Lập Kế Hoạch Gym &amp;<br />
+        <span style="color:#c4b5fd;">Dinh Dưỡng Cá Nhân</span>
+      </h1>
+      <p class="text-purple-200" style="max-width:36rem;margin:0 auto;font-size:1rem;">
+        Nhập thông tin sức khoẻ của bạn để nhận bài tập gym và thực đơn dinh dưỡng
+        được tạo riêng cho mục tiêu của bạn.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== INPUT FORM ===== -->
+  <section class="section-sm">
+    <div class="container-md white-card" style="padding:2rem;box-shadow:0 8px 40px rgba(124,58,237,0.12);">
+      <h2 class="font-display font-bold text-indigo-900" style="font-size:1.5rem;margin-bottom:1.5rem;">Thông tin cá nhân</h2>
+
+      <div id="error-box"></div>
+
+      <div class="grid grid-md-2 gap-4">
+        <div>
+          <label class="font-medium text-indigo-900" style="display:block;font-size:0.875rem;margin-bottom:0.375rem;">Cân nặng (kg)</label>
+          <input type="number" id="weight" placeholder="70" />
+        </div>
+        <div>
+          <label class="font-medium text-indigo-900" style="display:block;font-size:0.875rem;margin-bottom:0.375rem;">Chiều cao (cm)</label>
+          <input type="number" id="height" placeholder="170" />
+        </div>
+        <div>
+          <label class="font-medium text-indigo-900" style="display:block;font-size:0.875rem;margin-bottom:0.375rem;">Tuổi</label>
+          <input type="number" id="age" placeholder="25" />
+        </div>
+        <div>
+          <label class="font-medium text-indigo-900" style="display:block;font-size:0.875rem;margin-bottom:0.375rem;">Giới tính</label>
+          <div class="grid grid-2 gap-2" id="gender-group">
+            <button class="toggle-btn active" data-value="male">👨 Nam</button>
+            <button class="toggle-btn" data-value="female">👩 Nữ</button>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:1.25rem;">
+        <label class="font-medium text-indigo-900" style="display:block;font-size:0.875rem;margin-bottom:0.5rem;">Mục tiêu</label>
+        <div class="grid grid-3 gap-2" id="goal-group">
+          <button class="toggle-btn" data-value="lose">🔥 Giảm cân</button>
+          <button class="toggle-btn active" data-value="maintain">⚖️ Duy trì</button>
+          <button class="toggle-btn" data-value="gain">💪 Tăng cơ</button>
+        </div>
+      </div>
+
+      <div style="margin-top:1.25rem;">
+        <label class="font-medium text-indigo-900" style="display:block;font-size:0.875rem;margin-bottom:0.5rem;">Mức độ vận động hiện tại</label>
+        <div class="grid grid-2 gap-2" id="activity-group">
+          <button class="toggle-btn" data-value="sedentary" style="text-align:left;font-size:0.75rem;">🛋️ Ít vận động</button>
+          <button class="toggle-btn" data-value="light" style="text-align:left;font-size:0.75rem;">🚶 Nhẹ (1–3 ngày/tuần)</button>
+          <button class="toggle-btn active" data-value="moderate" style="text-align:left;font-size:0.75rem;">🏃 Vừa (3–5 ngày/tuần)</button>
+          <button class="toggle-btn" data-value="active" style="text-align:left;font-size:0.75rem;">🏋️ Tích cực (6–7 ngày)</button>
+        </div>
+      </div>
+
+      <button id="submit-btn" class="btn-primary w-full" style="margin-top:1.5rem;padding:1rem;border-radius:0.75rem;font-weight:700;font-size:1rem;">
+        <span>🚀 Tạo Kế Hoạch Ngay</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ===== RESULT ===== -->
+  <section id="plan-result" class="section-sm hidden" style="padding-bottom:4rem;">
+    <div class="container-sm" id="result-container" style="display:flex;flex-direction:column;gap:1.5rem;"></div>
+  </section>
+
+</div>
+
+<script src="assets/navbar.js"></script>
+<script src="assets/gym.js"></script>
+</body>
+</html>
